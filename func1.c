@@ -1,8 +1,6 @@
 #include<stdio.h>
 
-int square (int a){
-	return a*a;
-}
+int square (int a); 		/* function prototype*/
 
 int main(void){
 	int mynumber;
@@ -12,4 +10,8 @@ int main(void){
 		mynumber, square(mynumber) );
 
 	return 0;
+}
+
+int square (int a){
+	return a*a;
 }
