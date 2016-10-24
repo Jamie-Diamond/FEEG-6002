@@ -2,6 +2,7 @@
 /* traning 2.c - a program to print celsius and farenhiet conversion.
 Jamie Diamond , October 2016, University of Southampton , jd12g13@soton.ac.uk
 
+ ___test change for GIT -------
 */
 #include<stdio.h> 
 
