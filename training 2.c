@@ -3,6 +3,7 @@
 Jamie Diamond , October 2016, University of Southampton , jd12g13@soton.ac.uk
 
  ___test change for GIT -------
+ Test change #2
 */
 #include<stdio.h> 
 
