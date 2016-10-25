@@ -1,4 +1,4 @@
-"""Plotfile.py: small utility to support SESG6025.
+"""Plotfile.py: small utility to support SESG6025 test change.
 
 Usage:
 
