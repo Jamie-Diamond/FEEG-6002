@@ -7,6 +7,9 @@
 #define XMAX 10
 
 
+
+
+
 int main(void) {
 	double x;
 	double y;
