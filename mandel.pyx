@@ -16,7 +16,8 @@ def mandel_cy(n, itermax=100, xmin=-2, xmax=0.5, ymin=-1.25, ymax=1.25):
         long it
         double x
         double y
-
+        double b
+        double a
     # create list containing n lists, each containing n zeros
     # (i.e. a matrix, represented as a list of lists)
     its = [ [0] * n for i in xrange(n)]
@@ -35,18 +36,26 @@ def mandel_cy(n, itermax=100, xmin=-2, xmax=0.5, ymin=-1.25, ymax=1.25):
             # c is the complex number with the given
             # x, y coordinates in the complex plane, i.e. c = x + i * y
             # where i = sqrt(-1)
-            c = x + y * 1j
+            c = x + y*1j
+            ci = x
+            cr = y
+            a = 0
+            b = 0
             z = 0
             # Here is the actual Mandelbrot criterion: we update z to be
             # z <- z^2 + c until |z| <= 2. We could the number of iterations
             # required. This number of iterations is the data we need to compute
             # (and plot if desired).
             while it < itermax and abs(z) < 2.0:
+                a = a*a-b*b+ci
+                b = 2*a*b+cr
+                # z^2 =real   a^2 - b^2
+                #  imaginary 2 * a * b
                 z = z ** 2 + c
                 it += 1
 
-            #print("ix={}, iy={}, x={}, y={}, c={}, z={}, abs(z)={}, it={}"
-            #    .format(ix, iy, x, y, c, z, abs(z), it))
+            print("x ={}, y={}, ix={}, iy={}, z_ab=({}+{}j), z={}"
+                .format(x, y, ix, iy, a, b, z, ))
 
             # Store the result in the matrix
             its[ix][iy] = it
