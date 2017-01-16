@@ -2,7 +2,7 @@
 #include<stdio.h>
 #include <stdlib.h>
 
-long* make_long_array_plus(long n){
+long* make_long_array(long n){
 	long *pi;
   pi = (long *)malloc(sizeof(long)*n+1);
 	if (pi == NULL) {

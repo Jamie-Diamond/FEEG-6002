@@ -22,7 +22,7 @@ void reverse(char source[], char target[]) {
 	int b;
 	int len = string_length(source);
 	for (i=0; source[i]; i++) {
-		b = len - 1 - i;
+		b = len - 1 - i; /* BEcause of end of string \0? */ 
 		target[i] = source[b];
 	}
 }

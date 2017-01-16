@@ -1,9 +1,9 @@
 #include<stdio.h>
 #include<math.h>
 
-#define N 10 
-#define XMIN 1 
-#define XMAX 10
+#define N 1000 
+#define XMIN -1 
+#define XMAX 1
 
 
 int main(void) {

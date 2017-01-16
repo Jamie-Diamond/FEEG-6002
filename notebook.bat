@@ -1,0 +1,1 @@
+C:\Apps\Anaconda3\python.exe C:\Apps\Anaconda3\cwp.py C:\Apps\Anaconda3 "C:/Apps/Anaconda3/python.exe" "C:/Apps/Anaconda3/Scripts/jupyter-notebook-script.py"

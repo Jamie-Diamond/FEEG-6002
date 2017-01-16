@@ -1,4 +1,7 @@
-def mandel_cy(n, itermax=100, xmin=-2, xmax=0.5, ymin=-1.25, ymax=1.25):
+#cython: boundscheck=False
+#cython: cdivision=True
+
+def mandel_cy(unsigned long n,unsigned long itermax=100,double xmin=-2,double xmax=0.5,double ymin=-1.25,double ymax=1.25):
     '''
     Mandelbrot fractal computation using Python.
 
@@ -11,13 +14,10 @@ def mandel_cy(n, itermax=100, xmin=-2, xmax=0.5, ymin=-1.25, ymax=1.25):
     n rows and n columns.
     '''
     cdef:
-        long ix 
-        long iy
-        long it
-        double x
-        double y
-        double b
-        double a
+        unsigned long it, ix, iy
+        double x, y
+        complex z, c
+
     # create list containing n lists, each containing n zeros
     # (i.e. a matrix, represented as a list of lists)
     its = [ [0] * n for i in xrange(n)]
@@ -36,26 +36,18 @@ def mandel_cy(n, itermax=100, xmin=-2, xmax=0.5, ymin=-1.25, ymax=1.25):
             # c is the complex number with the given
             # x, y coordinates in the complex plane, i.e. c = x + i * y
             # where i = sqrt(-1)
-            c = x + y*1j
-            ci = x
-            cr = y
-            a = 0
-            b = 0
-            z = 0
+            c = x + y * 1j
+            z, r, i = 0, 0 , 0
             # Here is the actual Mandelbrot criterion: we update z to be
             # z <- z^2 + c until |z| <= 2. We could the number of iterations
             # required. This number of iterations is the data we need to compute
             # (and plot if desired).
-            while it < itermax and abs(z) < 2.0:
-                a = a*a-b*b+ci
-                b = 2*a*b+cr
-                # z^2 =real   a^2 - b^2
-                #  imaginary 2 * a * b
-                z = z ** 2 + c
+            while it < itermax and (z.real * z.real + z.imag * z.imag) < 4.0:
+                z = z * z + c
                 it += 1
 
-            print("x ={}, y={}, ix={}, iy={}, z_ab=({}+{}j), z={}"
-                .format(x, y, ix, iy, a, b, z, ))
+            #print("ix={}, iy={}, x={}, y={}, c={}, z={}, abs(z)={}, it={}"
+            #    .format(ix, iy, x, y, c, z, abs(z), it))
 
             # Store the result in the matrix
             its[ix][iy] = it

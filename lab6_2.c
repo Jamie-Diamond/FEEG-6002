@@ -2,6 +2,9 @@
 
 #include <stdio.h>
 #include <string.h>
+
+
+#define MAXLINE 1000
 /* Function void rstrip(char s[])
 modifies the string s: if at the end of the string s there are one or more spaces,
 then remove these from the string.
@@ -27,22 +30,34 @@ void rstrip(char s[]) {
 	s[end] = '\0';
 }
 
-void lstrip(char s[]) {
-	int i;
-	int num = 0;
+void lstrip(char s[]){
+	int num = 0; /* integer where string starts */ 
+	int i, i2;
+	int len;
+	char tmp[MAXLINE];
+	strcpy(tmp, s);
 	for (i=0; s[i]; i++){
 		if (s[i] == ' ')
 			num++;
-		else if (s[i] != ' ' || s[i] != '\0')
+		else
 			break;
 	}
-	memmove(s, s+num, strlen(s));
+	/* need length of string */
+	len = 0;
+	while (s[len]){len++;} 
+	/* for loop moving everything one place forwards */
+	i = 0;
+	for(i2 = num; i2<len; i2++)
+		tmp[i++] = tmp[i2];
+	tmp[len-num] = '\0';
+	strcpy(s, tmp);
+	
 }
 
 
 
 int main(void) {
-  char test1[] = "    hello    ";
+  char test1[] = "         ";
 
   printf("Original string reads  : |%s|\n", test1);
   lstrip(test1);

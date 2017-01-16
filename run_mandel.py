@@ -164,17 +164,17 @@ if __name__ == "__main__":
             print(doc)
         elif mode == '--speedup':
             if N is None:
-                N = 400
+                N = 300
 
             print ("Doing timings with {} x {} pixels".format(N, N))
             print ("Python code ...")
             t = timeit.Timer("mandel_py(N)", setup="from run_mandel import mandel_py; N={}".format(N))
-            time_python = min(t.repeat(number=1, repeat=5))
+            time_python = min(t.repeat(number=1, repeat=3))
             print("Time python: {} s".format(time_python))
 
             print("Cython code ...")
             t = timeit.Timer("mandel_cy(N)", setup="from mandel import mandel_cy; N={}".format(N))
-            time_cython = min(t.repeat(number=1, repeat=5))
+            time_cython = min(t.repeat(number=1, repeat=3))
             print("Time cython: %f s" % time_cython)
             print("Speed up: %.1f" % (time_python / time_cython))
         else:

@@ -4,7 +4,7 @@
 #include<math.h>
 #include <time.h>
 clock_t startm, stopm;
-#define RUNS 1
+#define RUNS 3
 #define START if ( (startm = clock()) == -1) {printf("Error calling clock");exit(1);}
 #define STOP if ( (stopm = clock()) == -1) {printf("Error calling clock");exit(1);}
 #define PRINTTIME printf( "%8.5f seconds used .", (((double) stopm-startm)/CLOCKS_PER_SEC/RUNS));
